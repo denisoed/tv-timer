@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --build",
     "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
     "lint:eslint": "eslint . --fix",
+    "lint:type-check": "npm run type-check",
     "lint": "run-s lint:*",
     "format": "prettier --write src/"
   },
