@@ -56,6 +56,8 @@ interface TimerOption {
   label: string;
 }
 
+type FocusedButton = 'play' | 'reset' | 'back' | null;
+
 export default defineComponent({
   name: 'HomeView',
   components: {
@@ -117,12 +119,12 @@ export default defineComponent({
       return currentFocusIndex === index;
     };
 
-    const getFocusedButton = () => {
+    const getFocusedButton = (): FocusedButton => {
       if (!showTimer.value) return null;
       
-      const buttonMap = ['play', 'reset', 'back'];
+      const buttonMap: FocusedButton[] = ['play', 'reset', 'back'];
       const buttonIndex = currentFocusIndex - 6; // Subtract timer options count
-      return buttonMap[buttonIndex] || null;
+      return buttonIndex >= 0 && buttonIndex < buttonMap.length ? buttonMap[buttonIndex] : null;
     };
 
     // Update focusable elements when timer view changes

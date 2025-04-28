@@ -14,6 +14,11 @@ declare module '@/stores/timerStore' {
     intervalId: number | null
   }
 
+  export interface TimerGetters {
+    formattedTime: string
+    progress: number
+  }
+
   export interface TimerActions {
     startTimer: () => void
     stopTimer: () => void
@@ -21,7 +26,7 @@ declare module '@/stores/timerStore' {
     setTimer: (time: number) => void
   }
 
-  export type TimerStore = Store<'timer', TimerState> & TimerActions
+  export type TimerStore = Store<'timer', TimerState> & TimerActions & TimerGetters
   export const useTimerStore: () => TimerStore
 }
 
