@@ -44,7 +44,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, computed } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
 import { useTimerStore } from '@/stores/timerStore';
 import { useFocusNavigation } from '@/composables/useFocusNavigation';
 import TimerOption from '@/components/TimerOption.vue';

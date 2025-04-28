@@ -1,6 +1,6 @@
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
+  const component: DefineComponent<Record<string, unknown>, Record<string, unknown>, unknown>
   export default component
 }
 
@@ -13,7 +13,16 @@ declare module '@/stores/timerStore' {
     cycleCount: number
     intervalId: number | null
   }
-  export const useTimerStore: () => Store<'timer', TimerState>
+
+  export interface TimerActions {
+    startTimer: () => void
+    stopTimer: () => void
+    resetTimer: () => void
+    setTimer: (time: number) => void
+  }
+
+  export type TimerStore = Store<'timer', TimerState> & TimerActions
+  export const useTimerStore: () => TimerStore
 }
 
 declare module '@/composables/useFocusNavigation' {
@@ -23,6 +32,6 @@ declare module '@/composables/useFocusNavigation' {
 
 declare module '@/components/*' {
   import type { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
+  const component: DefineComponent<Record<string, unknown>, Record<string, unknown>, unknown>
   export default component
 } 
